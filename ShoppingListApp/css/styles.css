@@ -1,0 +1,12 @@
+html, body {
+  margin: 5px;
+  padding: 0;
+}
+
+#app ul {
+  list-style: none;
+}
+
+#app li span.bought {
+  text-decoration: line-through;
+}

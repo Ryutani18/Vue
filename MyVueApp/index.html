@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+      
+    <div id="app">
+      <h1>My Todos</h1>
+      <form v-on:submit.prevent>
+        <input v-model="new_task" type="text">
+        <input v-on:click="AddTask" type="submit" value="Add">
+      </form>
+      <ul>
+        <!-- <li>{{ todos[0] }}</li>
+        <li>{{ todos[1] }}</li>
+        <li>{{ todos[2] }}</li> -->
+        <!-- 期限を追加したい -->
+        <li v-for="(todo, index) in todos">
+          <div v-bind:class="{task: DateTime(todo)}">
+            <input type="checkbox" v-model="todo.isDone">
+            <span v-bind:class="{done: todo.isDone}">{{todo.item}}</span>
+            <input type="date" @change="Sort_by_date" v-model="todo.due_date">
+            <button v-on:click="DeleteTask(index)">Delete</button>
+            <span class="fa fa-heart" v-on:click="Like(todo)" v-bind:class="{like: todo.like}"></span>
+          </div>
+        </li>
+      </ul>
+      <pre>{{ $data }}</pre>
+    </div>
+      
+    <script src="js/main.js"></script>
+  </body>
+</html>

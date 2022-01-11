@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+      
+    <div id="app">
+      <h1>Shopping List App</h1>
+      <form @submit.prevent>
+        <input v-model="name" type="text">
+        <button @click="AddFood">Add</button>
+      </form>
+      <ul>
+        <li v-for="(list, index) in lists">
+          <input type="checkbox" v-model="list.in_cart">
+          <span v-bind:class="{bought: list.in_cart}">{{ list.item }}</span>
+          <select v-model="list.amount">
+            <option v-for="option in [...Array(99)].map((_, i) => i+1)">{{ option }}</option>
+          </select>
+          <button @click="DeleteFood(index)">delete</button>
+        </li>
+      </ul>
+      <pre>{{ $data }}</pre>
+    </div>
+      
+    <script src="js/test.js"></script>
+  </body>
+</html>
